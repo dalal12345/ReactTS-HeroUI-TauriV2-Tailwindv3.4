@@ -3,11 +3,7 @@ import { RouteListInterface } from "../../interface/routes/RouteInterface";
 export const RouteList: RouteListInterface = [
   {
     name: "Home",
-    url: "home",
-  },
-  {
-    name: "Playlist",
-    url: "playlist",
+    url: "",
   },
   {
     name: "Settings",
