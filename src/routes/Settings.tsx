@@ -4,21 +4,21 @@ import {
   CardBody,
   CardFooter,
   Button,
-  Alert
+  Alert,
 } from "@heroui/react";
 
 import { Link } from "react-router-dom";
 
-export default function About() {
+export default function Settings() {
   return (
     <div className="p-8 ">
-       <Alert color="warning" className="w-full">
-            
-              If you know the name of the train you have to use, you can select
-              the train directly from dropdown below, otherwise don't change
-              it...
-           
-          </Alert>
+      <Alert
+        color="warning"
+        className="w-full"
+      >
+        If you know the name of the train you have to use, you can select the
+        train directly from dropdown below, otherwise don't change it...
+      </Alert>
       <Card className="max-w-xl mx-auto shadow-lg">
         <CardHeader>
           <h2 className="text-2xl font-semibold">About This App</h2>
@@ -32,7 +32,6 @@ export default function About() {
           </p>
         </CardBody>
         <CardFooter>
-         
           <Link to={"/"}>
             <Button color="primary">Home</Button>
           </Link>

@@ -28,10 +28,12 @@ function App() {
   }, [dark]);
 
   return (
-    <div className="grid min-h-screen
+    <div
+      className="grid min-h-screen
      bg-white text-black dark:bg-zinc-900
       dark:text-white transition-colors pt-10
-      ">
+      "
+    >
       {!isMobileOS && <MenuBar />}
       <Outlet />
     </div>
