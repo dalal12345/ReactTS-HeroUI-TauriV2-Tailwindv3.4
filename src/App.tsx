@@ -32,6 +32,7 @@ function App() {
       className="grid min-h-screen
      bg-white text-black dark:bg-zinc-900
       dark:text-white transition-colors pt-10
+      max-h-[100vh] custom-scrollbar
       "
     >
       {!isMobileOS && <MenuBar />}

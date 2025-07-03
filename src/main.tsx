@@ -6,6 +6,7 @@ import Home from "./routes/Home";
 import { HeroUIProvider } from "@heroui/react";
 import "@fontsource-variable/inter";
 import Settings from "./routes/Settings";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
