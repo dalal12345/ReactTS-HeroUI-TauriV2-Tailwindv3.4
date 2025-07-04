@@ -12,13 +12,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThemeToggleButton from "../../ui/ThemeToggleButton";
 import NavigationComponent from "./desktop/NavigationComponent";
-import { useApplicationStore } from "@/store/ApplicationStore";
 import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
+import { useApplicationStore } from "@/store/ApplicationStore";
+import { clsx } from "clsx";
 
 export default function MenuBar() {
   const [isFullScreen, setIsFullScreen] = useState<boolean | null>(null);
   const toggleMenuBar = useApplicationStore((state) => state.toggleMenuBar);
   const menuBarVisible = useApplicationStore((state) => state.menuBarVisible);
+  const applicationUpdateAvailable = useApplicationStore(
+    (state) => state.applicationUpdateAvailable
+  );
 
   const navigate = useNavigate();
   const startDraggingWindow = async () => {
@@ -97,11 +101,16 @@ export default function MenuBar() {
           </p>
         </li>
 
-        <li className="col-span-2 sm:col-span-1   w-full h-full cursor-grabbing grid items-center">
+        <li className="col-span-2 sm:col-span-1   w-full h-full cursor-pointer grid items-center">
           <Popover>
             <PopoverTrigger>
               <p>
-                <CircleDot className="text-white"/>
+                <CircleDot
+                  className={clsx("", {
+                    "text-green-600": !applicationUpdateAvailable,
+                    "text-red-600": applicationUpdateAvailable,
+                  })}
+                />
               </p>
             </PopoverTrigger>
             <PopoverContent>

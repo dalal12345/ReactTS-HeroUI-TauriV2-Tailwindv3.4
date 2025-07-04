@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Button,
-  Alert,
-} from "@heroui/react";
+import { Card, CardHeader, CardBody, CardFooter, Alert } from "@heroui/react";
 
 import { Link } from "react-router-dom";
 
@@ -32,9 +25,7 @@ export default function Settings() {
           </p>
         </CardBody>
         <CardFooter>
-          <Link to={"/"}>
-            <Button color="primary">Home</Button>
-          </Link>
+          <Link to={"/"}>Home</Link>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             © 2025 Your Company. All rights reserved.
           </p>
