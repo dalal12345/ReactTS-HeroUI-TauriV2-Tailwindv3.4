@@ -1,36 +1,26 @@
-import { Card, CardHeader, CardBody, CardFooter, Alert } from "@heroui/react";
-
+import { Divider, Switch } from "@heroui/react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Settings() {
   return (
-    <div className="p-8 ">
-      <Alert
-        color="warning"
-        className="w-full"
-      >
-        If you know the name of the train you have to use, you can select the
-        train directly from dropdown below, otherwise don't change it...
-      </Alert>
-      <Card className="max-w-xl mx-auto shadow-lg">
-        <CardHeader>
-          <h2 className="text-2xl font-semibold">About This App</h2>
-        </CardHeader>
-        <CardBody>
-          <p className="text-base leading-relaxed">
-            This desktop application is built using Tauri v2, React 18 with
-            TypeScript, Tailwind CSS 3.4, Zustand for state management, and
-            HeroUI for modern UI components. It supports light/dark mode and is
-            optimized for performance and cross-platform compatibility.
-          </p>
-        </CardBody>
-        <CardFooter>
-          <Link to={"/"}>Home</Link>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            © 2025 Your Company. All rights reserved.
-          </p>
-        </CardFooter>
-      </Card>
+    <div className="p-4">
+      <h1 className="font-bold text-3xl">Settings</h1>
+      <div className="grid gap-2 w-full">
+        <Link
+          to={"/"}
+          className="flex gap-2 font-bold w-fit justify-self-end"
+        >
+          <ArrowLeft />
+          <p>Home</p>
+        </Link>
+      </div>
+
+      <Divider />
+      <div>
+        <h1 className="font-bold text-xl">Background</h1>
+        <Switch></Switch>
+      </div>
     </div>
   );
 }

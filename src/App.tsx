@@ -4,6 +4,9 @@ import { Outlet } from "react-router-dom";
 import useOsInfoStore from "./store/OsInfoStore";
 import MenuBar from "./components/menuBar/MenuBar";
 import useThemeStore from "./store/ThemeStore";
+import ContextMenuComponent from "./components/contextMenu/ContextMenuComponent";
+import { useContextMenuStore } from "./store/ContextMenuStore";
+import { useApplicationStore } from "./store/ApplicationStore";
 
 function App() {
   const dark = useThemeStore((state) => state.dark);
@@ -11,6 +14,16 @@ function App() {
   const detectOS = useOsInfoStore((state) => state.detectMobileOS);
   const isMobileOS = useOsInfoStore((state) => state.isMobileOS);
   const osFetched = useOsInfoStore((state) => state.osFetched);
+  const contextMenuVisible = useContextMenuStore(
+    (state) => state.contextMenuVisible
+  );
+  const setContextMenuVisible = useContextMenuStore(
+    (state) => state.setContextMenuVisible
+  );
+  const menuBarVisible = useApplicationStore((state) => state.menuBarVisible);
+  const setMenuBarVisible = useApplicationStore(
+    (state) => state.setMenuBarVisible
+  );
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -34,10 +47,14 @@ function App() {
   }, [dark]);
 
   useEffect(() => {
-    window.addEventListener("contextmenu", (e) => {
+    const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-    });
-  }, []);
+      setContextMenuVisible(!contextMenuVisible);
+      if (menuBarVisible) setMenuBarVisible(false);
+    };
+    window.addEventListener("contextmenu", handleContextMenu);
+    return () => window.removeEventListener("contextmenu", handleContextMenu);
+  }, [contextMenuVisible]);
 
   return (
     <div
@@ -49,7 +66,7 @@ function App() {
     >
       {!isMobileOS && <MenuBar />}
       <Outlet />
-      <h1>{`${osFetched}`}</h1>
+      <ContextMenuComponent />
     </div>
   );
 }

@@ -3,17 +3,19 @@
 @tailwind utilities;
 
 body {
-  font-family: "Inter Variable", sans-serif;
+  font-family: 'Inter Variable', sans-serif;
+
 }
 
-* {
-  padding: 0;
-  margin: 0;
+*{
+    padding: 0;
+    margin: 0;
 }
+
 
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #4d4d4d #1e1e1e;
+  scrollbar-color: #4d4d4d #1e1e1e; /* Thumb & Track for Firefox */
   overflow: auto;
 }
 
