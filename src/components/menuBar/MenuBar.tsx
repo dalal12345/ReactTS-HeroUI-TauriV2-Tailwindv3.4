@@ -17,6 +17,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 import { useApplicationStore } from "@/store/ApplicationStore";
 import { clsx } from "clsx";
 import MetadataInfo from "./desktop/MetadataInfo";
+import useOsInfoStore from "@/store/OsInfoStore";
 
 export default function MenuBar() {
   const [isFullScreen, setIsFullScreen] = useState<boolean | null>(null);
@@ -28,6 +29,9 @@ export default function MenuBar() {
   const applicationVersion = useApplicationStore(
     (state) => state.applicationVersion
   );
+
+    const isMobileOS = useOsInfoStore((state) => state.isMobileOS);
+
 
   const navigate = useNavigate();
   const startDraggingWindow = async () => {
@@ -70,7 +74,10 @@ export default function MenuBar() {
     <div className="menu-bar fixed z-50 top-0 grid left-0 grid-cols-12 w-full   bg-[#191f1f] dark:bg-zinc-900">
       <div className=" w-full h-full col-span-1 sm:flex"></div>
 
-      <div className="flex window-control justify-center justify-items-center col-span-4  sm:col-span-2   grid-cols-3 items-start gap-4 p-1 ">
+      <div className={clsx("",{
+        "flex window-control justify-center justify-items-center col-span-4  sm:col-span-2   grid-cols-3 items-start gap-4 p-1 ":!isMobileOS,
+        "hidden":isMobileOS
+      })}>
         <X
           onClick={handleWindowClose}
           className="cursor-pointer w-5 text-white"
@@ -87,7 +94,12 @@ export default function MenuBar() {
         />
       </div>
 
-      <ul className="window-drag-area gap-2  col-span-6 sm:col-span-8 grid items-center w-full   grid-cols-12">
+      <ul className={
+        clsx("",{
+          "window-drag-area gap-2  col-span-6 sm:col-span-8 grid items-center w-full   grid-cols-12":!isMobileOS,
+          "window-drag-area gap-2  col-span-10 sm:col-span-6 grid items-center w-full   grid-cols-12":isMobileOS
+        })
+      }>
         {/* Dragging window section.... */}
         <li
           className="col-span-2 sm:col-span-4   w-full h-full cursor-grabbing"
