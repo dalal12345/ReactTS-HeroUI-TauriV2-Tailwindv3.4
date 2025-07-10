@@ -12,11 +12,11 @@ const useOsInfoStore = create<OsInfoState>((set, get) => ({
   detectMobileOS: () => {
     const osInfoStore = get();
     const setOsFetched = osInfoStore.setOsFetched;
-    let osFetched = osInfoStore.osFetched;
+    // let osFetched = osInfoStore.osFetched;
     const currentOS = platform();
     set({ osName: currentOS });
     setOsFetched(true);
-    osFetched = osInfoStore.osFetched;
+    // osFetched = osInfoStore.osFetched;
 
     if (currentOS === "android" || currentOS === "ios") {
       set({ isMobileOS: true });
