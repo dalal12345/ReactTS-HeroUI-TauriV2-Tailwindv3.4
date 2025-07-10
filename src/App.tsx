@@ -24,6 +24,9 @@ function App() {
   const setMenuBarVisible = useApplicationStore(
     (state) => state.setMenuBarVisible
   );
+  const checkApplicationUpdate = useApplicationStore(
+    (state) => state.checkApplicationUpdate
+  );
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -45,6 +48,11 @@ function App() {
       localStorage.setItem("theme", "light");
     }
   }, [dark]);
+
+
+  useEffect(()=>{
+checkApplicationUpdate();
+  },[]);
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {

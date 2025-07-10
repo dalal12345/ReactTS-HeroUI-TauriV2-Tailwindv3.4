@@ -15,6 +15,7 @@ import NavigationComponent from "./desktop/NavigationComponent";
 import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 import { useApplicationStore } from "@/store/ApplicationStore";
 import { clsx } from "clsx";
+import MetadataInfo from "./desktop/MetadataInfo";
 
 export default function MenuBar() {
   const [isFullScreen, setIsFullScreen] = useState<boolean | null>(null);
@@ -114,9 +115,13 @@ export default function MenuBar() {
               </p>
             </PopoverTrigger>
             <PopoverContent>
-              <div className="max-h-[60vh] ">
-                <h1>No update yet...</h1>
-              </div>
+              {!applicationUpdateAvailable && (
+                <div className="max-h-[60vh] ">
+                  <h1>No update yet...</h1>
+                </div>
+              )}
+
+               {applicationUpdateAvailable && <MetadataInfo/>}
             </PopoverContent>
           </Popover>
         </li>

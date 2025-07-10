@@ -1,11 +1,19 @@
 {
-  "version": "0.0.0",
+  "version": "0.0.3",
   "release_date": "YYYY-MM-DD",
-  "features": ["Feature 1","Feature 2"],
-  "fixed_errors": ["Error 1"],
+  "features": [
+    "Feature 1",
+    "Feature 2"
+  ],
+  "fixed_errors": [
+    "Error 1"
+  ],
   "notes": "This release focuses on various new sections",
-  "release_url": "https://github.com/AhmedTrooper/RailwayMatrixBD/releases/tag/v0.6.0",
+  "release_url": "https://raw.githubusercontent.com/dalal12345/ReactTS-HeroUI-TauriV2-Tailwindv3.4/main/update/metadata.json",
   "author": "AhmedTrooper",
   "severity": "medium",
-  "platforms": ["windows", "android"]
+  "platforms": [
+    "windows",
+    "android"
+  ]
 }
