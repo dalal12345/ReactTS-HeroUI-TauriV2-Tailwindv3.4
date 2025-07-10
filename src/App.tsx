@@ -7,11 +7,13 @@ import useThemeStore from "./store/ThemeStore";
 import ContextMenuComponent from "./components/contextMenu/ContextMenuComponent";
 import { useContextMenuStore } from "./store/ContextMenuStore";
 import { useApplicationStore } from "./store/ApplicationStore";
+import clsx from "clsx";
 
 function App() {
   const dark = useThemeStore((state) => state.dark);
   const setDark = useThemeStore((state) => state.setDark);
   const detectOS = useOsInfoStore((state) => state.detectMobileOS);
+  const isMobileOS = useOsInfoStore((state) => state.isMobileOS);
   const osFetched = useOsInfoStore((state) => state.osFetched);
   const contextMenuVisible = useContextMenuStore(
     (state) => state.contextMenuVisible
@@ -64,11 +66,12 @@ function App() {
 
   return (
     <div
-      className="grid min-h-screen
-     bg-white text-black dark:bg-zinc-900
-      dark:text-white transition-colors pt-10
-      max-h-[100vh] custom-scrollbar select-none
-      "
+      className={clsx(
+        "grid min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white transition-colors pt-10 max-h-[100vh] select-none",
+        {
+          "custom-scrollbar": !isMobileOS,
+        }
+      )}
     >
       {" "}
       <MenuBar />
