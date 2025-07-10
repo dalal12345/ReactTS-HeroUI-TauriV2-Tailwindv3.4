@@ -1,5 +1,4 @@
 import { useApplicationStore } from "@/store/ApplicationStore";
-import { Button } from "@heroui/react";
 import { Download } from "lucide-react";
 
 export default function MetadataInfo() {
@@ -15,11 +14,9 @@ export default function MetadataInfo() {
     (state) => state.onlineApplicationVersion
   );
 
-   const metadataUrl = useApplicationStore(
-    (state) => state.metadataUrl
-  );
+  const metadataUrl = useApplicationStore((state) => state.metadataUrl);
 
-  if(!metadataInformation) return;
+  if (!metadataInformation) return;
   return (
     <div className="w-40 sm:w-60 md:w-80 p-2 grid gap-2">
       <h1>Current : {applicationVersion}</h1>

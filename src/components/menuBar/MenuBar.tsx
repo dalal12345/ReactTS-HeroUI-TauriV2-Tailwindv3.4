@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  Check,
   CircleDot,
   Maximize2,
   Menu,
@@ -23,6 +24,9 @@ export default function MenuBar() {
   const menuBarVisible = useApplicationStore((state) => state.menuBarVisible);
   const applicationUpdateAvailable = useApplicationStore(
     (state) => state.applicationUpdateAvailable
+  );
+  const applicationVersion = useApplicationStore(
+    (state) => state.applicationVersion
   );
 
   const navigate = useNavigate();
@@ -116,12 +120,16 @@ export default function MenuBar() {
             </PopoverTrigger>
             <PopoverContent>
               {!applicationUpdateAvailable && (
-                <div className="max-h-[60vh] ">
-                  <h1>No update yet...</h1>
+                <div className="max-h-[60vh]p-2">
+                  <p>Current : {String(applicationVersion)}</p>
+                  <h1 className="text-green-600 flex gap-2">
+                    <Check />
+                    No update yet...
+                  </h1>
                 </div>
               )}
 
-               {applicationUpdateAvailable && <MetadataInfo/>}
+              {applicationUpdateAvailable && <MetadataInfo />}
             </PopoverContent>
           </Popover>
         </li>
