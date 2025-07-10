@@ -12,7 +12,6 @@ function App() {
   const dark = useThemeStore((state) => state.dark);
   const setDark = useThemeStore((state) => state.setDark);
   const detectOS = useOsInfoStore((state) => state.detectMobileOS);
-  const isMobileOS = useOsInfoStore((state) => state.isMobileOS);
   const osFetched = useOsInfoStore((state) => state.osFetched);
   const contextMenuVisible = useContextMenuStore(
     (state) => state.contextMenuVisible
@@ -49,10 +48,9 @@ function App() {
     }
   }, [dark]);
 
-
-  useEffect(()=>{
-checkApplicationUpdate();
-  },[]);
+  useEffect(() => {
+    checkApplicationUpdate();
+  }, []);
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -72,7 +70,8 @@ checkApplicationUpdate();
       max-h-[100vh] custom-scrollbar select-none
       "
     >
-      {!isMobileOS && <MenuBar />}
+      {" "}
+      <MenuBar />
       <Outlet />
       <ContextMenuComponent />
     </div>
