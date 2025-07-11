@@ -8,6 +8,4 @@ export interface MetadataState {
   author: string;
   severity: "low" | "medium" | "high";
   platforms: string[];
-  onlineYtDlpVersion: string;
-  ytdlpUrl: string;
 }

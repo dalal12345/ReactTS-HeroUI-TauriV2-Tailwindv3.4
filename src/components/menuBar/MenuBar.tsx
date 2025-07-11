@@ -29,7 +29,9 @@ export default function MenuBar() {
   const applicationVersion = useApplicationStore(
     (state) => state.applicationVersion
   );
-
+ const onlineApplicationVersion = useApplicationStore(
+    (state) => state.onlineApplicationVersion
+  );
     const isMobileOS = useOsInfoStore((state) => state.isMobileOS);
 
 
@@ -134,6 +136,7 @@ export default function MenuBar() {
               {!applicationUpdateAvailable && (
                 <div className="max-h-[60vh]p-2">
                   <p>Current : {String(applicationVersion)}</p>
+                  <p>Online : {String(onlineApplicationVersion)}</p>
                   <h1 className="text-green-600 flex gap-2">
                     <Check />
                     No update yet...
